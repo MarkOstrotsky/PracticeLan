@@ -51,6 +51,7 @@
             this.playground.Name = "playground";
             this.playground.Size = new System.Drawing.Size(724, 407);
             this.playground.TabIndex = 0;
+            this.playground.MouseMove += new System.Windows.Forms.MouseEventHandler(this.playground_MouseMove);
             // 
             // racketC
             // 
@@ -70,6 +71,7 @@
             this.racketP.Size = new System.Drawing.Size(15, 135);
             this.racketP.TabIndex = 1;
             this.racketP.TabStop = false;
+            this.racketP.Click += new System.EventHandler(this.racketP_Click);
             this.racketP.Paint += new System.Windows.Forms.PaintEventHandler(this.racketP_Paint);
             this.racketP.MouseMove += new System.Windows.Forms.MouseEventHandler(this.racketP_MouseMove);
             // 

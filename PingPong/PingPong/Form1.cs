@@ -13,6 +13,7 @@ namespace PingPong
 
     public partial class Form1 : Form
     {
+        private object currentobj = null;       //Объект ракетки игрока
         public int speedball = 5;        //Скорость шарика
         public int pointComp = 0;       //Очки компьютера
         public int pointPlayer = 0;    //Очки игрока
@@ -31,7 +32,7 @@ namespace PingPong
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //racketP.Top = Cursor.Position.Y - (racketP.Height / 2);
+            racketP.Top = Cursor.Position.Y - (racketP.Height / 2);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -44,11 +45,10 @@ namespace PingPong
 
         private void racketP_MouseMove(object sender, MouseEventArgs e)
         {
-            Point pos = e.Location;
-            
+           
         }
 
-        private void racketP_Paint(object sender, PaintEventArgs e)
+        private void racketP_Paint(object sender, PaintEventArgs e)     //Отрисовка ракетки игрока
         {
             Graphics g = e.Graphics;
             SolidBrush brush = new SolidBrush(System.Drawing.Color.Red);
@@ -56,12 +56,23 @@ namespace PingPong
             e.Graphics.FillRectangle(brush, rect);
         }
 
-        private void racketC_Paint(object sender, PaintEventArgs e)
+        private void racketC_Paint(object sender, PaintEventArgs e)     //Отрисовка ракетки компьютера
         {
             Graphics g = e.Graphics;
             SolidBrush brush = new SolidBrush(System.Drawing.Color.Red);
             Rectangle rect = new Rectangle(0, 0, 15, 135);
             e.Graphics.FillRectangle(brush, rect);
+        }
+
+        private void racketP_Click(object sender, EventArgs e)
+        {
+            currentobj = sender;        //Выделение ракетки игроком
+        }
+
+        private void playground_MouseMove(object sender, MouseEventArgs e)      //Перемещение ракетки за курсором игрока
+        {
+            if (currentobj != null)
+                currentobj.GetType().GetProperty("Location").SetValue(currentobj, new Point(e.X, e.Y));
         }
     }
 }
