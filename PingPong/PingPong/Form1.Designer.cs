@@ -34,6 +34,7 @@
             this.racketP = new System.Windows.Forms.PictureBox();
             this.racketC = new System.Windows.Forms.PictureBox();
             this.playground = new System.Windows.Forms.Panel();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.racketP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.racketC)).BeginInit();
@@ -42,7 +43,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ball
@@ -89,6 +90,11 @@
             this.playground.Paint += new System.Windows.Forms.PaintEventHandler(this.playground_Paint);
             this.playground.MouseMove += new System.Windows.Forms.MouseEventHandler(this.playground_MouseMove);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 10;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +118,7 @@
         private System.Windows.Forms.PictureBox racketP;
         private System.Windows.Forms.PictureBox racketC;
         private System.Windows.Forms.Panel playground;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
