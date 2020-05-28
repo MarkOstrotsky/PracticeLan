@@ -29,39 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.playground = new System.Windows.Forms.Panel();
-            this.racketC = new System.Windows.Forms.PictureBox();
-            this.racketP = new System.Windows.Forms.PictureBox();
-            this.ball = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.playground.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.racketC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.racketP)).BeginInit();
+            this.ball = new System.Windows.Forms.PictureBox();
+            this.racketP = new System.Windows.Forms.PictureBox();
+            this.racketC = new System.Windows.Forms.PictureBox();
+            this.playground = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.racketP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.racketC)).BeginInit();
+            this.playground.SuspendLayout();
             this.SuspendLayout();
             // 
-            // playground
+            // timer1
             // 
-            this.playground.Controls.Add(this.racketC);
-            this.playground.Controls.Add(this.racketP);
-            this.playground.Controls.Add(this.ball);
-            this.playground.Location = new System.Drawing.Point(0, 55);
-            this.playground.Name = "playground";
-            this.playground.Size = new System.Drawing.Size(724, 407);
-            this.playground.TabIndex = 0;
-            this.playground.MouseMove += new System.Windows.Forms.MouseEventHandler(this.playground_MouseMove);
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // racketC
+            // ball
             // 
-            this.racketC.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.racketC.Location = new System.Drawing.Point(3, 133);
-            this.racketC.Name = "racketC";
-            this.racketC.Size = new System.Drawing.Size(15, 135);
-            this.racketC.TabIndex = 1;
-            this.racketC.TabStop = false;
-            this.racketC.Paint += new System.Windows.Forms.PaintEventHandler(this.racketC_Paint);
+            this.ball.Location = new System.Drawing.Point(367, 200);
+            this.ball.Name = "ball";
+            this.ball.Size = new System.Drawing.Size(16, 16);
+            this.ball.TabIndex = 0;
+            this.ball.TabStop = false;
+            this.ball.Paint += new System.Windows.Forms.PaintEventHandler(this.ball_Paint);
             // 
             // racketP
             // 
@@ -75,65 +66,52 @@
             this.racketP.Paint += new System.Windows.Forms.PaintEventHandler(this.racketP_Paint);
             this.racketP.MouseMove += new System.Windows.Forms.MouseEventHandler(this.racketP_MouseMove);
             // 
-            // ball
+            // racketC
             // 
-            this.ball.Location = new System.Drawing.Point(328, 191);
-            this.ball.Name = "ball";
-            this.ball.Size = new System.Drawing.Size(16, 16);
-            this.ball.TabIndex = 0;
-            this.ball.TabStop = false;
+            this.racketC.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.racketC.Location = new System.Drawing.Point(31, 133);
+            this.racketC.Name = "racketC";
+            this.racketC.Size = new System.Drawing.Size(15, 135);
+            this.racketC.TabIndex = 1;
+            this.racketC.TabStop = false;
+            this.racketC.Paint += new System.Windows.Forms.PaintEventHandler(this.racketC_Paint);
             // 
-            // timer1
+            // playground
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(321, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(379, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
+            this.playground.Controls.Add(this.racketC);
+            this.playground.Controls.Add(this.racketP);
+            this.playground.Controls.Add(this.ball);
+            this.playground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playground.Location = new System.Drawing.Point(0, 0);
+            this.playground.Name = "playground";
+            this.playground.Size = new System.Drawing.Size(724, 477);
+            this.playground.TabIndex = 0;
+            this.playground.Paint += new System.Windows.Forms.PaintEventHandler(this.playground_Paint);
+            this.playground.MouseMove += new System.Windows.Forms.MouseEventHandler(this.playground_MouseMove);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 462);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(724, 477);
             this.Controls.Add(this.playground);
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.playground.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.racketC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.racketP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.racketP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.racketC)).EndInit();
+            this.playground.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel playground;
-        private System.Windows.Forms.PictureBox ball;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.PictureBox racketC;
+        private System.Windows.Forms.PictureBox ball;
         private System.Windows.Forms.PictureBox racketP;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox racketC;
+        private System.Windows.Forms.Panel playground;
     }
 }
 
