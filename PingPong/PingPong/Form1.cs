@@ -42,12 +42,18 @@ namespace PingPong
 
             ball.Top += speedballtop;
             ball.Left += speedballleft;
+            racketC.Location = new Point(15, ball.Location.Y-55);
             
             if (ball.Right >= racketP.Left && ball.Right <= racketP.Right && ball.Bottom <= racketP.Bottom && ball.Top >= racketP.Top)
             {
                 speedballleft += 1;
                 speedballtop += 1;
                 speedballleft = -speedballleft;
+            }
+            if (speedballleft == 14 | speedballtop == 14)
+            {
+                speedballleft -= 1;
+                speedballtop -= 1;
             }
 
             if (ball.Bottom >= playground.Bottom)
