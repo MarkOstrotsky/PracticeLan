@@ -39,12 +39,24 @@ namespace PingPong
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            racketC.Location = new Point(35, ball.Location.Y - 45);           // мегаискусственный интеллект
+            //racketC.Location = new Point(35, ball.Location.Y - 45);           // мегаискусственный интеллект
 
-            if (ball.Left <= racketC.Right && ball.Right >= racketC.Right && ball.Bottom <= racketC.Bottom && ball.Top >= racketC.Top)      //Физика компьютера
+            if (ball.Left <= racketC.Right && ball.Right >= racketC.Right && ball.Bottom >= racketC.Top && ball.Top <= racketC.Bottom)      //Физика компьютера
             {
 
                 speedballleft = -speedballleft;
+            }
+
+            if (racketC.Top +20 > ball.Top-8)
+            {
+                Point point = new Point(racketC.Location.X, racketC.Location.Y - 5);
+                racketC.Location = point;
+            }
+
+            if (racketC.Bottom - 30 < ball.Top - 8)
+            {
+                Point point = new Point(racketC.Location.X, racketC.Location.Y + 5);
+                racketC.Location = point;
             }
         }
 
@@ -57,10 +69,11 @@ namespace PingPong
             ball.Top += speedballtop;
             ball.Left += speedballleft;
 
-            if (ball.Right >= racketP.Left && ball.Right <= racketP.Right && ball.Bottom <= racketP.Bottom && ball.Top >= racketP.Top)      //Физика игрока
+            if (ball.Right >= racketP.Left && ball.Left <= racketP.Left && ball.Bottom >= racketP.Top && ball.Top <= racketP.Bottom)      //Физика игрока
             {
                 
                 speedballleft = -speedballleft;
+                speedballleft -= 1;
             }
             
 
@@ -68,13 +81,15 @@ namespace PingPong
             
             {
                 speedballtop =- speedballtop;
+                speedballtop -= 1;
             }
 
             if (ball.Left <= playground.Left)           //Забив гола компьютеру
             {
                 pointPlayer += 1;
                 ScorePlayer.Text = pointPlayer.ToString();
-                speedballleft = -speedballleft;
+                speedballleft = 5;
+                speedballtop = 5;
             }
 
             if (ball.Top <= playground.Top)
@@ -139,10 +154,9 @@ namespace PingPong
 
         private void playground_MouseMove(object sender, MouseEventArgs e)      //Перемещение ракетки за курсором игрока
         {
-            Rectangle rect = new Rectangle(playground.PointToScreen(new Point(playground.Width / 2 +11, 0)), new Size(playground.Width / 2, playground.Height));
-            //Cursor.Clip.Size = rect;
+            // Ограничение области движение курсора
+            Rectangle rect = new Rectangle(playground.PointToScreen(new Point(playground.Width / 2 +11, 0)), new Size(playground.Width / 2, playground.Height)); 
             this.Cursor = new Cursor(Cursor.Current.Handle);
-           // Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
             Cursor.Clip = rect;
             if (currentobj != null)
                 currentobj.GetType().GetProperty("Location").SetValue(currentobj, new Point(e.X, e.Y));
