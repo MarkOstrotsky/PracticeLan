@@ -67,11 +67,10 @@ namespace PingPong
                 speedballtop =- speedballtop;
             }
 
-            if (ball.Left <= playground.Left)
+            if (ball.Left <= playground.Left)           //Забив гола компьютеру
             {
                 pointPlayer += 1;
                 ScorePlayer.Text = pointPlayer.ToString();
-                ball.Location = center;
             }
 
             if (ball.Top <= playground.Top)
@@ -79,10 +78,14 @@ namespace PingPong
                 speedballtop = -speedballtop;
             }
 
-            if (ball.Right >= playground.Right)
+            if (ball.Right >= playground.Right)         //Забив гола игроку
             {
                pointComp += 1;
                 ScoreComp.Text = pointComp.ToString();
+            }
+            
+            if (ball.Left <= playground.Left | ball.Right >=playground.Right)
+            {
                 ball.Location = center;
             }
 
