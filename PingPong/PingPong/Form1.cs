@@ -39,15 +39,13 @@ namespace PingPong
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            //racketC.Location = new Point(35, ball.Location.Y - 45);           // мегаискусственный интеллект
-
             if (ball.Left <= racketC.Right && ball.Right >= racketC.Right && ball.Bottom >= racketC.Top && ball.Top <= racketC.Bottom)      //Физика компьютера
             {
 
                 speedballleft = -speedballleft;
             }
 
-            if (racketC.Top +20 > ball.Top-8)
+            if (racketC.Top +20 > ball.Top-8)                                               //Искусственный интелект
             {
                 Point point = new Point(racketC.Location.X, racketC.Location.Y - 5);
                 racketC.Location = point;
