@@ -35,6 +35,8 @@
             this.racketC = new System.Windows.Forms.PictureBox();
             this.playground = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.ScoreComp = new System.Windows.Forms.Label();
+            this.ScorePlayer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.racketP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.racketC)).BeginInit();
@@ -79,6 +81,8 @@
             // 
             // playground
             // 
+            this.playground.Controls.Add(this.ScoreComp);
+            this.playground.Controls.Add(this.ScorePlayer);
             this.playground.Controls.Add(this.racketC);
             this.playground.Controls.Add(this.racketP);
             this.playground.Controls.Add(this.ball);
@@ -95,6 +99,24 @@
             this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // ScoreComp
+            // 
+            this.ScoreComp.AutoSize = true;
+            this.ScoreComp.Location = new System.Drawing.Point(353, 9);
+            this.ScoreComp.Name = "ScoreComp";
+            this.ScoreComp.Size = new System.Drawing.Size(13, 13);
+            this.ScoreComp.TabIndex = 1;
+            this.ScoreComp.Text = "0";
+            // 
+            // ScorePlayer
+            // 
+            this.ScorePlayer.AutoSize = true;
+            this.ScorePlayer.Location = new System.Drawing.Point(384, 9);
+            this.ScorePlayer.Name = "ScorePlayer";
+            this.ScorePlayer.Size = new System.Drawing.Size(13, 13);
+            this.ScorePlayer.TabIndex = 2;
+            this.ScorePlayer.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.racketP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.racketC)).EndInit();
             this.playground.ResumeLayout(false);
+            this.playground.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -119,6 +142,8 @@
         private System.Windows.Forms.PictureBox racketC;
         private System.Windows.Forms.Panel playground;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label ScoreComp;
+        private System.Windows.Forms.Label ScorePlayer;
     }
 }
 

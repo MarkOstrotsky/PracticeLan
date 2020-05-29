@@ -49,8 +49,8 @@ namespace PingPong
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        { 
-
+        {
+            Point center = new Point(367, 200);
             ball.Top += speedballtop;
             ball.Left += speedballleft;
 
@@ -69,7 +69,9 @@ namespace PingPong
 
             if (ball.Left <= playground.Left)
             {
-                speedballleft = -speedballleft; 
+                pointPlayer += 1;
+                ScorePlayer.Text = pointPlayer.ToString();
+                ball.Location = center;
             }
 
             if (ball.Top <= playground.Top)
@@ -79,7 +81,9 @@ namespace PingPong
 
             if (ball.Right >= playground.Right)
             {
-                speedballleft = -speedballleft;
+               pointComp += 1;
+                ScoreComp.Text = pointComp.ToString();
+                ball.Location = center;
             }
 
         }
@@ -124,8 +128,8 @@ namespace PingPong
             //Rectangle rect = new Rectangle (playground.Width / 2, 0, playground.Width / 2, playground.Height)
             //Cursor.Clip.Size = rect;
             this.Cursor = new Cursor(Cursor.Current.Handle);
-            Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
-            Cursor.Clip = new Rectangle(playground.Location, playground.Size);
+           // Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
+           // Cursor.Clip = new Rectangle(playground.Location, playground.Size);
             if (currentobj != null)
                 currentobj.GetType().GetProperty("Location").SetValue(currentobj, new Point(e.X, e.Y));
             
