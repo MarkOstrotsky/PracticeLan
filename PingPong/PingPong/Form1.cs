@@ -41,7 +41,7 @@ namespace PingPong
         {
             racketC.Location = new Point(35, ball.Location.Y - 45);           // мегаискусственный интеллект
 
-            if (ball.Left <= racketC.Right && ball.Right <= racketC.Right && ball.Bottom <= racketC.Bottom && ball.Top >= racketC.Top)      //Физика компьютера
+            if (ball.Left <= racketC.Right && ball.Right >= racketC.Right && ball.Bottom <= racketC.Bottom && ball.Top >= racketC.Top)      //Физика компьютера
             {
 
                 speedballleft = -speedballleft;
@@ -139,11 +139,11 @@ namespace PingPong
 
         private void playground_MouseMove(object sender, MouseEventArgs e)      //Перемещение ракетки за курсором игрока
         {
-            //Rectangle rect = new Rectangle (playground.Width / 2, 0, playground.Width / 2, playground.Height)
+            Rectangle rect = new Rectangle(playground.PointToScreen(new Point(playground.Width / 2 +11, 0)), new Size(playground.Width / 2, playground.Height));
             //Cursor.Clip.Size = rect;
             this.Cursor = new Cursor(Cursor.Current.Handle);
            // Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
-           // Cursor.Clip = new Rectangle(playground.Location, playground.Size);
+            Cursor.Clip = rect;
             if (currentobj != null)
                 currentobj.GetType().GetProperty("Location").SetValue(currentobj, new Point(e.X, e.Y));
             
