@@ -23,7 +23,7 @@ namespace PingPong
         { 
             InitializeComponent();
 
-            timer1.Enabled = true;
+            //timer1.Enabled = true;
             timer2.Enabled = true;
             //this.FormBorderStyle = FormBorderStyle.None;
             this.TopMost = true;
@@ -50,7 +50,10 @@ namespace PingPong
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Point center = new Point(367, 200);
+            Point center = new Point();     
+            Random rnd = new Random();
+            center.Y = rnd.Next(1, 470);        
+            center.X = 365;                     //Нахождение нового центра после гола
             ball.Top += speedballtop;
             ball.Left += speedballleft;
 
@@ -71,6 +74,7 @@ namespace PingPong
             {
                 pointPlayer += 1;
                 ScorePlayer.Text = pointPlayer.ToString();
+                speedballleft = -speedballleft;
             }
 
             if (ball.Top <= playground.Top)
@@ -82,10 +86,12 @@ namespace PingPong
             {
                pointComp += 1;
                 ScoreComp.Text = pointComp.ToString();
+                speedballleft = -speedballleft;
             }
             
-            if (ball.Left <= playground.Left | ball.Right >=playground.Right)
+            if (ball.Left <= playground.Left | ball.Right >=playground.Right)       //Начало новго раунда после гола
             {
+
                 ball.Location = center;
             }
 
@@ -122,7 +128,12 @@ namespace PingPong
 
         private void racketP_Click(object sender, EventArgs e)
         {
-            currentobj = sender;        //Выделение ракетки игроком
+            currentobj = sender;        //Выделение ракетки игроком и начало игры
+            if (currentobj == sender)
+            {
+                timer1.Enabled = true;
+                label2.Hide();
+            }
            
         }
 
